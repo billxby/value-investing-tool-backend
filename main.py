@@ -1,9 +1,14 @@
 import requests
 import config
+from dotenv import load_dotenv, dotenv_values
+import os
+
+load_dotenv()
 
 ticker = "MSFT"
+api_key = os.getenv("API_KEY")
 
-incomeStatementReq = requests.get(f"https://financialmodelingprep.com/api/v3/income-statement-as-reported/{ticker}?limit=10&apikey={config.api_key}")
+incomeStatementReq = requests.get(f"https://financialmodelingprep.com/api/v3/income-statement-as-reported/{ticker}?limit=10&apikey={api_key}")
 
 incomeStatement = incomeStatementReq.json()
 
