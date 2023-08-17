@@ -5,7 +5,7 @@ import os
 
 load_dotenv()
 
-ticker = "WMT"
+ticker = "MSFT"
 riskLevel = 0
 # riskLevel 0, 1, or 2
 api_key = os.getenv("API_KEY")
@@ -50,6 +50,7 @@ print("---------------------------")
 estimatedEBIT = avgRevenue*avgOperatingMargin
 estimatedEBIT *= (1-config.avgRateOfTax)
 estimatedEBITDA = cashFlow[0]["depreciationAndAmortization"] + estimatedEBIT
+estimatedEBITDA*=(1-config.retainedForGrowth)
 
 print(estimatedEBIT)
 print(estimatedEBITDA)
